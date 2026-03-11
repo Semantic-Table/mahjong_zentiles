@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"C:/Sites/mahjong_zentiles\" && npm install pixi.js tone)",
+      "Bash(cd \"C:/Sites/mahjong_zentiles/src\" && mkdir -p core rendering audio ui && rm -f counter.ts typescript.svg)",
+      "Bash(cd \"C:/Sites/mahjong_zentiles\" && npx tsc --noEmit 2>&1)",
+      "Bash(cd \"C:/Sites/mahjong_zentiles\" && npx tsx -e \"\nimport { LAYOUTS } from './src/core/Layouts.ts';\nconsole.log\\('Shanghai cells:', LAYOUTS.shanghai.cells.length\\);\nconsole.log\\('Mini cells:', LAYOUTS.mini.cells.length\\);\n\" 2>&1)",
+      "Bash(cd \"C:/Sites/mahjong_zentiles\" && npx tsx -e \"import { LAYOUTS } from './src/core/Layouts.ts'; console.log\\('Shanghai:', LAYOUTS.shanghai.cells.length\\); console.log\\('Mini:', LAYOUTS.mini.cells.length\\);\")",
+      "Bash(cd \"C:/Sites/mahjong_zentiles\" && npx tsx -e \"\nimport { LAYOUTS } from './src/core/Layouts.ts';\nimport { generateSolvableBoard } from './src/core/Solver.ts';\nimport { Board } from './src/core/Board.ts';\nimport { isBoardSolvable } from './src/core/Solver.ts';\n\nconsole.log\\('Generating solvable Shanghai board...'\\);\nconst types = generateSolvableBoard\\(LAYOUTS.shanghai\\);\nconsole.log\\('Tiles generated:', types.length\\);\n\nconst board = new Board\\(\\);\nboard.init\\(LAYOUTS.shanghai, types\\);\nconsole.log\\('Board tiles:', board.tiles.length\\);\nconsole.log\\('Free tiles:', board.getFreeTiles\\(\\).length\\);\nconsole.log\\('Matchable pairs:', board.findMatchablePairs\\(\\).length\\);\nconsole.log\\('Is solvable:', isBoardSolvable\\(board\\)\\);\n\" 2>&1)",
+      "Bash(cd \"C:/Sites/mahjong_zentiles\" && npx tsx -e \"\nimport { LAYOUTS } from './src/core/Layouts.ts';\nimport { Board } from './src/core/Board.ts';\n\n// Quick test with mini layout first\nconst board = new Board\\(\\);\nconst dummyTypes = LAYOUTS.mini.cells.map\\(\\(\\) => \\({\n  suit: 'bamboo' as const, rank: 1, label: 'X', matchGroup: 'dummy',\n}\\)\\);\nboard.init\\(LAYOUTS.mini, dummyTypes\\);\nconsole.log\\('Mini board tiles:', board.tiles.length\\);\nconsole.log\\('Mini free tiles:', board.getFreeTiles\\(\\).length\\);\n\" 2>&1)",
+      "Bash(cd \"C:/Sites/mahjong_zentiles\" && node --import tsx -e \"\nconst { LAYOUTS } = await import\\('./src/core/Layouts.ts'\\);\nconsole.log\\('Mini cells:', LAYOUTS.mini.cells.length\\);\n\" 2>&1)",
+      "Bash(cd \"C:/Sites/mahjong_zentiles\" && npx tsx -e \"console.log\\('hello'\\)\" 2>&1)",
+      "Bash(cd \"C:/Sites/mahjong_zentiles\" && npx tsx -e \"\ntry {\n  const { LAYOUTS } = await import\\('./src/core/Layouts.ts'\\);\n  console.log\\('Mini cells:', LAYOUTS.mini.cells.length\\);\n} catch\\(e\\) {\n  console.error\\(e\\);\n}\n\" 2>&1)"
+    ]
+  }
+}
